@@ -6,9 +6,10 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
     $name = $_POST['name'];
     $telepon =  $_POST['telepon'];
     $idspp = $_POST['idspp'];
+    $idkelas = $_POST['idkelas'];
 
-    $sql = "SELECT * FROM siswa WHERE nisn=? AND nama=? AND no_telp=? AND id_spp=? ";
-    $row = $koneksi->execute_query($sql, [$nisn, $name, $telepon, $idspp]);
+    $sql = "SELECT * FROM siswa WHERE nisn=? AND nama=? AND no_telp=? AND id_spp=? AND id_kelas=?";
+    $row = $koneksi->execute_query($sql, [$nisn, $name, $telepon, $idspp, $idkelas]);
 
     if (mysqli_num_rows($row) == 1) {
         session_start();
@@ -44,8 +45,12 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
             <input type="tel" name="telepon" id="telepon" required>
         </div>
         <div class="form-item">
-            <label for="idspp">ID spp</label>
+            <label for="idspp">ID SPP</label>
             <input type="number" name="idspp" id="idspp" required>
+        </div>
+        <div class="form-item">
+            <label for="idkelas">ID Kelas</label>
+            <input type="number" name="idkelas" id="idkelas" required>
         </div>
         <button type="submit">Login</button>
         <a href="register.php">register</a>
