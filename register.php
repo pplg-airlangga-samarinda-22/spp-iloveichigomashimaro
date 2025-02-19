@@ -2,21 +2,21 @@
 require "koneksi.php";
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $nis = $_POST['nis'];
+    $nisn = $_POST['nisn'];
 
     //cek dulu apakah nis telah terdaftar
-    $sql = "SELECT * FROM siswa WHERE nis=?";
-    $cek = $koneksi->execute_query($sql, [$nis]);
+    $sql = "SELECT * FROM siswa WHERE nisn=?";
+    $cek = $koneksi->execute_query($sql, [$nisn]);
 
     if (mysqli_num_rows($cek) == 1) {
-        echo "<script>alert('NIS sudah digunakan!')</script>";
+        echo "<script>alert('NISN sudah digunakan!')</script>";
     } else {
         $name = $_POST['name'];
         $telepon = $_POST['telepon'];
         $idspp = $_POST['idspp'];
         $idkelas = $_POST['idkelas'];
-        $sql = "INSERT INTO siswa SET nis=?, nama=?, no_telp=?, id_spp=?, id_kelas=?";
-        $koneksi->execute_query($sql, [$nis, $name, $telepon, $idspp, $idkelas]);
+        $sql = "INSERT INTO siswa SET nisn=?, nama=?, no_telp=?, id_spp=?, id_kelas=?";
+        $koneksi->execute_query($sql, [$nisn, $name, $telepon, $idspp, $idkelas]);
         echo "<script>alert('Pendaftaran Berhasil!')</script>";
         header("location:login.php");
     }
@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     <title>Registrasi</title>
 </head>
 <body>
-    <h1>Registrasi NIS</h1>
+    <h1>Registrasi NISN</h1>
     <form action="" method="post">
         <div class="form-item">
-            <label for="nis">NIS</label>
-            <input type="number" name="nis" id="nis">
+            <label for="nisn">NISN</label>
+            <input type="number" name="nisn" id="nisn">
         </div>
         <div class="form-item">
             <label for="name">Nama Lengkap</label>
