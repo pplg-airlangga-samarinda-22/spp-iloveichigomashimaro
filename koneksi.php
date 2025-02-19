@@ -6,6 +6,6 @@
     $database = "db_spp";
 
     
-    $koneksi = new mysqli($hostname, $username, $password, $database);
+    $koneksi = new mysqli( $hostname, $username, $password, $database);
 
 ?>
