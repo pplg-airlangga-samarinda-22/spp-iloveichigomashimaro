@@ -16,19 +16,19 @@
     <table>
         <thead>
             <th>ID SPP</th>
-            <th>Tahun</th>
+            <th>Nama</th>
             <th>Nominal</th>
         </thead>
         <tbody>
             <?php
-                include "koneksi.php";
                 $nisn = $_SESSION['nisn'];
-                $data = mysqli_query($koneksi, "select * from spp");
-                while ($row = mysqli_fetch_array($data)) {   
+                $query = "SELECT siswa.id_spp, siswa.nama, spp.nominal FROM siswa INNER JOIN spp ON siswa.nisn = spp.id_spp";
+                $data = mysqli_query($koneksi,$query);
+                while ($row = mysqli_fetch_array($data)) {
             ?>
             <tr>
                 <td><?= $row['id_spp']; ?></td>
-                <td><?= $row['tahun']; ?></td>
+                <td><?= $row['nama']; ?></td>
                 <td><?= $row['nominal']; ?></td>
             </tr>
             <?php
