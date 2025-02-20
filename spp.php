@@ -8,9 +8,6 @@
 <head>
     <title>SPP</title>
 </head>
-<style>
-
-</style>
 <body>
     <h1>Halaman SPP</h1>
     <table>
